@@ -1,10 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Science - Jana Pulak</title>
 <link rel="stylesheet" href="style.css" />
+<style>
+/* Container styling */
+.project-panel {
+  max-width: 900px;
+  margin: 0 auto 80px auto;
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 0 28px rgba(100, 0, 50, 0.12);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animate into view on scroll */
+.project-panel.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title styling with subtle animation */
+.project-title {
+  font-size: 2.6rem;
+  color: #ff6f91;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.15;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+}
+.project-title span {
+  display: inline-block;
+  animation: slideText 1s ease forwards;
+}
+@keyframes slideText {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Subtitle and description */
+.project-desc {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Rich content areas */
+.project-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Text and bullets */
+.project-details {
+  flex: 1 1 320px;
+}
+
+.project-details ul {
+  list-style: disc inside;
+  color: #ff6f91;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.project-details ul li {
+  margin-bottom: 10px;
+}
+
+/* Media area */
+.project-media {
+  flex: 1 1 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 28px rgb(255 111 145 / 0.3);
+  opacity: 0.9;
+  transition: opacity 0.35s ease;
+}
+
+.project-media img, .project-media video {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Hover effect to brighten media */
+.project-media:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Additional notes or links */
+.project-notes {
+  margin-top: 22px;
+  font-size: 1rem;
+  color: #999;
+  user-select: none;
+}
+
+.project-link {
+  color: #ff6f91;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover,
+.project-link:focus {
+  color: #db3e69;
+  text-decoration: underline;
+}
+
+/* Media queries */
+@media (max-width: 720px) {
+  .project-content {
+    flex-direction: column;
+  }
+  .project-media, .project-details {
+    flex-basis: 100%;
+  }
+}
+
+/* Scroll indicator (optional) */
+.scroll-anchor {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 64px;
+  width: 100%;
+  pointer-events: none;
+}
+</style>
 </head>
 <body>
 
@@ -12,48 +157,112 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html" class="active">Computer Science</a>
   <a href="marketing.html">Marketing</a>
+  <a href="index.html#projects">Projects</a>
 </nav>
 
-<main class="section">
+<main>
 
-  <section id="cs-intro" class="project-intro fullscreen" style="min-height:auto;">
-    <h1 id="intro-title">Computer Science Projects</h1>
-    <p id="intro-desc">Innovative technical solutions from IoT systems to full-stack applications.</p>
+  <section class="section fullscreen" style="cursor:default;">
+    <h1>Computer Science Portfolio</h1>
+    <p>Explore my patented IoT systems, innovative full-stack projects, and impactful software solutions.</p>
   </section>
 
-  <section id="cs-details" class="project-list">
-    <article id="project-ai-water" class="section" style="background:white;">
-      <h3>Automated Water Flow Control System (US12017844B2)</h3>
-      <p>IoT-based water management system using Arduino, C++, and Python; real-time monitoring, mobile app integration (Blynk), and cloud visualizations for villages in Bangladesh, reducing waste and increasing access.</p>
-    </article>
+  <!-- Project 1 -->
+  <section id="project-ai-water" class="project-panel">
+    <div class="scroll-anchor"></div>
+    <h2 class="project-title"><span>Automated Water Flow Control System (US12017844B2)</span></h2>
+    <p class="project-desc">Cutting-edge IoT water management system designed to optimize flow and improve health impacts in developing communities.</p>
+    <div class="project-content">
+      <div class="project-details">
+        <ul>
+          <li>Embedded system using C++ and Arduino microcontrollers for real-time control.</li>
+          <li>Mobile interface developed with Blynk platform for remote monitoring.</li>
+          <li>Cloud-powered data analytics dashboard for visualization and alerts.</li>
+          <li>Reduced water wastage for 1500+ users across 10 villages.</li>
+        </ul>
+        <div class="project-notes">
+          <a href="https://patents.google.com/patent/US12017844B2" target="_blank" class="project-link" rel="noopener noreferrer">View Patent Document</a>
+        </div>
+      </div>
+      <div class="project-media" onclick="window.open('https://patents.google.com/patent/US12017844B2', '_blank')">
+        <img src="images/water-system.jpg" alt="Automated Water Flow Control System" />
+      </div>
+    </div>
+  </section>
 
-    <article id="project-ikormi-platform" class="section" style="background:white;">
-      <h3>iKormi Digital Management Platform</h3>
-      <p>Database-driven system for tracking 1,500+ water filters across 10 villages, donor portals, inventory & clinic management with automated email notifications and analytics dashboards.</p>
-    </article>
+  <!-- Project 2 -->
+  <section id="project-ikormi-platform" class="project-panel">
+    <div class="scroll-anchor"></div>
+    <h2 class="project-title"><span>iKormi Digital Management Platform</span></h2>
+    <p class="project-desc">Streamlined attention to water filter distribution and healthcare patient tracking in impoverished regions through powerful software tools.</p>
+    <div class="project-content">
+      <div class="project-details">
+        <ul>
+          <li>Python and Excel automation for donor and inventory management.</li>
+          <li>Real-time healthcare scheduling and reporting dashboard.</li>
+          <li>Email notification system for clinic appointments and follow-up care.</li>
+          <li>Improved capacity by 50% via data-driven workflows.</li>
+        </ul>
+        <div class="project-notes">
+          <span>Contact for demo access</span>
+        </div>
+      </div>
+      <div class="project-media">
+        <img src="images/ikormi-platform.jpg" alt="iKormi Digital Management Platform" />
+      </div>
+    </div>
+  </section>
 
-    <article id="project-pulak-ecommerce" class="section" style="background:white;">
-      <h3>Pulak Group E-commerce Website</h3>
-      <p>Full-stack WordPress/PHP/JS store with payment processing, inventory control, SEO, and conversion tracking to support nonprofit water filtration sales.</p>
-    </article>
+  <!-- Project 3 -->
+  <section id="project-pulak-ecommerce" class="project-panel">
+    <div class="scroll-anchor"></div>
+    <h2 class="project-title"><span>Pulak Group E-commerce Website</span></h2>
+    <p class="project-desc">Full-stack WordPress and custom development for a responsive e-commerce store selling water filtration products to support nonprofit efforts.</p>
+    <div class="project-content">
+      <div class="project-details">
+        <ul>
+          <li>Integrated payment and inventory systems for seamless transactions.</li>
+          <li>SEO optimized landing pages to support fundraising campaigns.</li>
+          <li>Achieved 25% engagement and high conversion rates post-launch.</li>
+        </ul>
+        <div class="project-notes">
+          <a href="#" class="project-link">Visit Site</a>
+        </div>
+      </div>
+      <div class="project-media">
+        <img src="images/pulak-ecommerce.jpg" alt="Pulak Group E-commerce Website" />
+      </div>
+    </div>
   </section>
 
 </main>
 
+<footer>© 2025 Jana Pulak</footer>
+
 <script>
+// Intersection Observer to fade in project panels
 document.addEventListener('DOMContentLoaded', () => {
+  const panels = document.querySelectorAll('.project-panel');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+
+  panels.forEach(panel => observer.observe(panel));
+
+  // Scroll to hash project if present
   const hash = window.location.hash.substring(1);
-  if (hash) {
+  if(hash){
     const target = document.getElementById(hash);
-    if (target) {
-      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
-      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
-      setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 300);
+    if(target){
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 400);
     }
   }
 });
 </script>
 
-<footer>© 2025 Jana Pulak</footer>
 </body>
 </html>
