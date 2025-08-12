@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Computer Science - Your Name</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Computer Science - Your Name</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,43 +12,43 @@
   <a href="computer-science.html" class="active">Computer Science</a>
   <a href="marketing.html">Marketing</a>
   <a href="projects.html">Projects</a>
-  <a href="#contact">Contact</a>
 </nav>
 
-<main class="section detail-section">
+<main class="section">
 
-  <h1>Computer Science</h1>
-  <p>Welcome to my comprehensive computer science portfolio section. Below are my key skills and featured projects.</p>
+  <section id="cs-intro" class="project-intro">
+    <h1 id="intro-title">Computer Science Projects</h1>
+    <p id="intro-desc">My full tech portfolio, skills, and detailed project breakdowns.</p>
+  </section>
 
-  <h2>Skills & Tools</h2>
-  <ul>
-    <li>Programming languages: Python, JavaScript, C++</li>
-    <li>Frameworks & Libraries: React, Django, Node.js, TensorFlow</li>
-    <li>Data Analysis & Machine Learning</li>
-    <li>Version Control, Unit Testing, CI/CD</li>
-  </ul>
-
-  <h2>Projects</h2>
-  <div class="project-list">
+  <section id="cs-details" class="project-list">
     <article id="project-ai-chatbot">
       <h3>AI Chatbot Development</h3>
-      <p>Developed an NLP-based chatbot leveraging deep learning models for customer support automation.</p>
-      <p><a href="#">View on GitHub</a></p>
+      <p>Deep dive into building NLP assistants with Python + TensorFlow.</p>
     </article>
-
     <article id="project-data-dashboards">
       <h3>Data Visualization Dashboards</h3>
-      <p>Created interactive React & D3.js dashboards for real-time data insights.</p>
-      <p><a href="#">View live demo</a></p>
+      <p>Real-time data handled in React/D3 to support live analytics.</p>
     </article>
-    <!-- Add more detailed CS projects -->
-  </div>
+  </section>
 
 </main>
 
-<footer>
-  &copy; 2025 Your Name
-</footer>
+<footer>© 2025 Your Name</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.substring(1);
+  if(hash){
+    const target = document.getElementById(hash);
+    if(target){
+      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
+      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
+      target.scrollIntoView({behavior:'smooth'});
+    }
+  }
+});
+</script>
 
 </body>
 </html>
