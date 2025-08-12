@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Computer Science - Your Name</title>
+<title>Computer Science - Jana Pulak</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,56 +12,48 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html" class="active">Computer Science</a>
   <a href="marketing.html">Marketing</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="index.html#contact">Contact</a>
 </nav>
 
 <main class="section">
 
-  <!-- Dynamic Intro -->
-  <section id="cs-intro" class="project-intro fullscreen" style="min-height:auto; cursor:default;">
+  <section id="cs-intro" class="project-intro fullscreen" style="min-height:auto;">
     <h1 id="intro-title">Computer Science Projects</h1>
-    <p id="intro-desc">Explore my technical projects, from AI chatbots to data visualization platforms, showcasing my skills in programming, algorithms, and modern frameworks.</p>
+    <p id="intro-desc">Innovative technical solutions from IoT systems to full-stack applications.</p>
   </section>
 
-  <!-- Projects List -->
   <section id="cs-details" class="project-list">
-    <article id="project-ai-chatbot" class="section" style="background:white;">
-      <h3>AI Chatbot Development</h3>
-      <p>Developed an intelligent chatbot using Python and TensorFlow's NLP capabilities. It can understand queries, provide automated responses, and integrate into business customer support workflows — improving support efficiency by 60%.</p>
-      <p><a href="#" target="_blank">View Project</a></p>
+    <article id="project-ai-water" class="section" style="background:white;">
+      <h3>Automated Water Flow Control System (US12017844B2)</h3>
+      <p>IoT-based water management system using Arduino, C++, and Python; real-time monitoring, mobile app integration (Blynk), and cloud visualizations for villages in Bangladesh, reducing waste and increasing access.</p>
     </article>
 
-    <article id="project-data-visualization" class="section" style="background:white;">
-      <h3>Data Visualization Platform</h3>
-      <p>Built an interactive dashboard using React and D3.js that provides real-time visualization for live datasets. Features multiple graph types, filters, and responsive design for various screen sizes.</p>
-      <p><a href="#" target="_blank">View Live Demo</a></p>
+    <article id="project-ikormi-platform" class="section" style="background:white;">
+      <h3>iKormi Digital Management Platform</h3>
+      <p>Database-driven system for tracking 1,500+ water filters across 10 villages, donor portals, inventory & clinic management with automated email notifications and analytics dashboards.</p>
+    </article>
+
+    <article id="project-pulak-ecommerce" class="section" style="background:white;">
+      <h3>Pulak Group E-commerce Website</h3>
+      <p>Full-stack WordPress/PHP/JS store with payment processing, inventory control, SEO, and conversion tracking to support nonprofit water filtration sales.</p>
     </article>
   </section>
 
 </main>
 
-<footer>© 2025 Your Name</footer>
-
 <script>
-// Runs after page loads
 document.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash.substring(1); // remove '#'
+  const hash = window.location.hash.substring(1);
   if (hash) {
     const target = document.getElementById(hash);
     if (target) {
-      // Set intro title and description from this project
-      const tTitle = target.querySelector('h3').textContent;
-      const tDesc = target.querySelector('p').textContent;
-      document.getElementById('intro-title').textContent = tTitle;
-      document.getElementById('intro-desc').textContent = tDesc;
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
+      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
+      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
+      setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 300);
     }
   }
 });
 </script>
 
+<footer>© 2025 Jana Pulak</footer>
 </body>
 </html>
