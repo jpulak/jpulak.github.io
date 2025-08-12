@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Modern Aesthetic Portfolio - Your Name</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Navigation -->
 <nav id="navbar">
   <a href="#about" class="nav-link active">About</a>
   <a href="#computer-science" class="nav-link">Computer Science</a>
@@ -49,9 +50,9 @@
       <h2>Marketing</h2>
       <p>Data-driven brand storytelling that converts and inspires.</p>
       <ul>
-        <li>Social Media & Content Strategy</li>
-        <li>Email Campaign Automation & Analytics</li>
-        <li>Certifications: Google Analytics & HubSpot</li>
+        <li>Social Media &amp; Content Strategy</li>
+        <li>Email Campaign Automation &amp; Analytics</li>
+        <li>Certifications: Google Analytics &amp; HubSpot</li>
       </ul>
     </div>
     <div class="hover-overlay">Learn More</div>
@@ -59,56 +60,68 @@
 
   <!-- Projects Section -->
   <section id="projects" class="section projects-section">
+
+    <!-- CS Projects -->
     <div class="projects-half cs-projects">
       <h2>Computer Science Projects</h2>
       <div class="carousel cs-carousel" aria-live="polite" aria-atomic="true">
+
         <div class="project-slide active" onclick="location.href='computer-science.html#project-ai-chatbot'">
           <h3>AI Chatbot Development</h3>
           <p>NLP assistant automating customer support.</p>
         </div>
+
         <div class="project-slide" onclick="location.href='computer-science.html#project-data-visualization'">
           <h3>Data Visualization Platform</h3>
           <p>Interactive dashboards built with React/D3.</p>
         </div>
+
       </div>
       <div class="carousel-controls cs-controls">
-        <button class="prev-btn">&#x276E;</button>
-        <button class="next-btn">&#x276F;</button>
+        <button class="prev-btn" aria-label="Previous project">&#x276E;</button>
+        <button class="next-btn" aria-label="Next project">&#x276F;</button>
       </div>
     </div>
 
+    <!-- Marketing Projects -->
     <div class="projects-half marketing-projects">
       <h2>Marketing Projects</h2>
       <div class="carousel marketing-carousel" aria-live="polite" aria-atomic="true">
+
         <div class="project-slide active" onclick="location.href='marketing.html#project-social-growth'">
           <h3>Social Media Engagement Campaign</h3>
-          <img src="images/social-campaign.jpg" alt="Social Campaign Hero Image" />
+          <img src="images/social-campaign.jpg" alt="Social Campaign Image" onerror="this.style.display='none'">
           <p>Boosted organic engagement by 40% with creative messaging.</p>
         </div>
+
         <div class="project-slide" onclick="location.href='marketing.html#project-email-automation'">
           <h3>Email Automation Strategy</h3>
-          <img src="images/email-campaign.jpg" alt="Email Campaign Visual" />
+          <img src="images/email-campaign.jpg" alt="Email Campaign Image" onerror="this.style.display='none'">
           <p>Optimized conversions with segmented, automated flows.</p>
         </div>
+
       </div>
       <div class="carousel-controls marketing-controls">
-        <button class="prev-btn">&#x276E;</button>
-        <button class="next-btn">&#x276F;</button>
+        <button class="prev-btn" aria-label="Previous project">&#x276E;</button>
+        <button class="next-btn" aria-label="Next project">&#x276F;</button>
       </div>
     </div>
+
   </section>
 
   <!-- Contact Section -->
   <section id="contact" class="section contact-section">
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
-    <p>GitHub: <a href="#">github.com/yourusername</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+    <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
   </section>
 
 </main>
 
-<footer>© 2025 Your Name</footer>
+<footer>
+  &copy; 2025 Your Name
+</footer>
 
 <script src="script.js"></script>
 </body>
