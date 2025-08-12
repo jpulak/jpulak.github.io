@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Marketing - Your Name</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -11,24 +12,30 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html">Computer Science</a>
   <a href="marketing.html" class="active">Marketing</a>
-  <a href="projects.html">Projects</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#contact">Contact</a>
 </nav>
 
 <main class="section">
 
-  <section id="mkt-intro" class="project-intro">
+  <!-- Dynamic Intro -->
+  <section id="mkt-intro" class="project-intro fullscreen" style="min-height:auto; cursor:default;">
     <h1 id="intro-title">Marketing Projects</h1>
-    <p id="intro-desc">Highlighting my marketing campaigns, strategies, and results.</p>
+    <p id="intro-desc">Here you can explore my creative campaigns, social strategies, and data-driven marketing projects that have made measurable impact for brands.</p>
   </section>
 
+  <!-- Projects List -->
   <section id="mkt-details" class="project-list">
-    <article id="project-social-campaign">
-      <h3>Social Media Growth Campaign</h3>
-      <p>Case study of increasing engagement 40% and brand presence.</p>
+    <article id="project-social-growth" class="section" style="background:white;">
+      <h3>Social Media Engagement Campaign</h3>
+      <p>Led a content strategy and paid promotion push that increased social engagement by over 40%. The campaign incorporated video storytelling, targeted ads, and optimized posting schedules using analytics insights.</p>
+      <p><a href="#" target="_blank">View Campaign Case Study</a></p>
     </article>
-    <article id="project-email-automation">
+
+    <article id="project-email-automation" class="section" style="background:white;">
       <h3>Email Automation Strategy</h3>
-      <p>Boosted open rates 35% via automation workflows.</p>
+      <p>Implemented segmented email flows with tailored content for different audience groups, boosting open rates by 35% and conversions by 18%. Fully integrated with CRM tools for lead tracking.</p>
+      <p><a href="#" target="_blank">View Campaign Analytics</a></p>
     </article>
   </section>
 
@@ -39,12 +46,16 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.substring(1);
-  if(hash){
+  if (hash) {
     const target = document.getElementById(hash);
-    if(target){
-      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
-      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
-      target.scrollIntoView({behavior:'smooth'});
+    if (target) {
+      const tTitle = target.querySelector('h3').textContent;
+      const tDesc = target.querySelector('p').textContent;
+      document.getElementById('intro-title').textContent = tTitle;
+      document.getElementById('intro-desc').textContent = tDesc;
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
   }
 });
