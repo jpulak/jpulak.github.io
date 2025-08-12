@@ -1,105 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Computer Science Projects</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        /* Add these for slider */
-        .slider-container {
-            max-width: 700px;
-            margin: 60px auto;
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 30px;
-            color: var(--text-main);
-            box-shadow: 0 5px 25px #3c0a0acc;
-            position: relative;
-        }
-        .project-slide {
-            display: none;
-        }
-        .project-slide.active {
-            display: block;
-        }
-        .slide-title {
-            font-size: 1.8em;
-            margin-bottom: 16px;
-        }
-        .slide-desc {
-            font-size: 1.1em;
-            color: var(--text-subtle);
-        }
-        .slider-controls {
-            margin-top: 25px;
-            text-align: center;
-        }
-        .control-btn {
-            background: var(--red-accent);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            margin: 0 12px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        .control-btn:hover {
-            background: #a12a2a;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computer Science - Your Name</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="computer-science-projects.html">CS Projects</a>
-    <a href="marketing-projects.html">Marketing Projects</a>
-    <a href="#contact">Contact</a>
+<nav id="navbar">
+  <a href="index.html">Home</a>
+  <a href="computer-science.html" class="active">Computer Science</a>
+  <a href="marketing.html">Marketing</a>
+  <a href="projects.html">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div class="slider-container">
-    <div class="project-slide active">
-        <h3 class="slide-title">AI Chatbot Development</h3>
-        <p class="slide-desc">Created an NLP chatbot using Python and TensorFlow for customer support automation.</p>
-    </div>
-    <div class="project-slide">
-        <h3 class="slide-title">Data Visualization Dashboard</h3>
-        <p class="slide-desc">Built interactive dashboards in React with D3.js to analyze and visualize real-time data.</p>
-    </div>
-    <!-- Add more project slides here -->
+<main class="section detail-section">
 
-    <div class="slider-controls">
-        <button class="control-btn" id="prevBtn">&#8592; Prev</button>
-        <button class="control-btn" id="nextBtn">Next &#8594;</button>
-    </div>
-</div>
+  <h1>Computer Science</h1>
+  <p>Welcome to my comprehensive computer science portfolio section. Below are my key skills and featured projects.</p>
+
+  <h2>Skills & Tools</h2>
+  <ul>
+    <li>Programming languages: Python, JavaScript, C++</li>
+    <li>Frameworks & Libraries: React, Django, Node.js, TensorFlow</li>
+    <li>Data Analysis & Machine Learning</li>
+    <li>Version Control, Unit Testing, CI/CD</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <div class="project-list">
+    <article id="project-ai-chatbot">
+      <h3>AI Chatbot Development</h3>
+      <p>Developed an NLP-based chatbot leveraging deep learning models for customer support automation.</p>
+      <p><a href="#">View on GitHub</a></p>
+    </article>
+
+    <article id="project-data-dashboards">
+      <h3>Data Visualization Dashboards</h3>
+      <p>Created interactive React & D3.js dashboards for real-time data insights.</p>
+      <p><a href="#">View live demo</a></p>
+    </article>
+    <!-- Add more detailed CS projects -->
+  </div>
+
+</main>
 
 <footer>
-    &copy; 2025 Your Name
+  &copy; 2025 Your Name
 </footer>
-
-<script>
-    const slides = document.querySelectorAll('.project-slide');
-    let currentIndex = 0;
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
-    }
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
-    });
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        showSlide(currentIndex);
-    });
-</script>
 
 </body>
 </html>
