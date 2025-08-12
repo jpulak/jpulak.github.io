@@ -326,3 +326,56 @@ footer {
     padding: 60px 32px;
   }
 }
+.project-section {
+  position: relative;
+  padding: 0;
+  margin-bottom: 180px;
+}
+
+.project-header {
+  position: sticky;
+  top: 15%;
+  text-align: center;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.project-header h2 {
+  font-size: 2.2rem; /* much smaller heading */
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  letter-spacing: 1px;
+  transition: opacity 0.3s;
+}
+
+.project-header .tagline {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.project-body {
+  margin-top: 100vh; /* starts showing after header scrolls */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+}
+
+.project-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.project-media img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-body {
+    grid-template-columns: 1fr;
+  }
+}
