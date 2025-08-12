@@ -1,61 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Your Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="navbar">
     <a href="#welcome">Home</a>
-    <a href="#cs">Computer Science</a>
-    <a href="#marketing">Marketing</a>
-    <a href="#projects">Projects</a>
+    <a href="#cs-marketing">Computer Science & Marketing</a>
+    <a href="computer-science-projects.html">CS Projects</a>
+    <a href="marketing-projects.html">Marketing Projects</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<!-- Welcome Section -->
 <section class="section welcome" id="welcome">
     <h1>Your Name</h1>
     <p class="subtitle">Blending Computer Science & Marketing</p>
 </section>
 
-<!-- Computer Science Section -->
-<section class="section cs" id="cs">
-    <h2>Computer Science</h2>
-    <p>Showcasing my skills in programming, algorithms, web dev, and data science.</p>
-    <ul>
-        <li>Languages: Python, JavaScript, C++</li>
-        <li>Frameworks: React, Django, Node.js</li>
-        <li>Notable Projects: Chatbots, Data Visualizations</li>
-    </ul>
-</section>
-
-<!-- Marketing Section -->
-<section class="section marketing" id="marketing">
-    <h2>Marketing</h2>
-    <p>Digital strategy, campaigns, analytics, and creative branding experience.</p>
-    <ul>
-        <li>Email Campaigns & Automation</li>
-        <li>Social Media Growth (e.g., +40% engagement)</li>
-        <li>Certs: Google Analytics, HubSpot</li>
-    </ul>
-</section>
-
-<!-- Projects Section -->
-<section class="section projects" id="projects">
-    <h2>Projects</h2>
-    <div class="project-list">
-        <div class="project">
-            <h3>Project Title 1</h3>
-            <p>Short project description. <span class="tag">Python</span> <span class="tag">Marketing</span></p>
-        </div>
-        <div class="project">
-            <h3>Project Title 2</h3>
-            <p>Short project description. <span class="tag">Web</span> <span class="tag">Analytics</span></p>
-        </div>
+<!-- Combined CS / Marketing Block -->
+<section class="section cs-marketing" id="cs-marketing">
+    <div class="block cs-block" onclick="location.href='computer-science.html'">
+        <h2>Computer Science</h2>
+        <p>Programming, algorithms, web dev, data science.</p>
+        <div class="overlay">Learn More</div>
+    </div>
+    <div class="block marketing-block" onclick="location.href='marketing.html'">
+        <h2>Marketing</h2>
+        <p>Digital campaigns, strategy, analytics.</p>
+        <div class="overlay">Learn More</div>
     </div>
 </section>
 
@@ -71,15 +46,14 @@
     &copy; 2025 Your Name
 </footer>
 
-<!-- Smooth scroll JS (optional) -->
+<!-- Smooth scroll -->
 <script>
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if(href.startsWith('#')) {
-            e.preventDefault();
-            document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-        }
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
 </script>
