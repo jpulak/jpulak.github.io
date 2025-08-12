@@ -7,25 +7,56 @@
 </head>
 <body>
 
+<!-- Header -->
 <header>
-    <h1>Jana Pulak</h1>
-    <p>Portfolio</p>
+    <h1>Your Name</h1>
+    <p>Bridging Technology & Marketing</p>
 </header>
+
+<!-- Navigation -->
 <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
     <a href="computer-science.html">Computer Science</a>
     <a href="marketing.html">Marketing</a>
     <a href="projects.html">Projects</a>
     <a href="contact.html">Contact</a>
 </nav>
 
+<!-- Main Content -->
 <div class="container">
-    <h2>Welcome</h2>
-    <p>Hello! I'm a professional blending computer science expertise with marketing strategy. Explore my portfolio to see how technology and creativity meet.</p>
-    <img src="images/profile.jpg" alt="Profile photo" class="profile">
+    <section class="welcome">
+        <h2>Welcome</h2>
+        <p>Hello! I’m a professional who blends computer science expertise with marketing strategy. Explore my portfolio below.</p>
+    </section>
+
+    <!-- Two Columns -->
+    <section class="two-column">
+        <div class="column" onclick="location.href='computer-science.html'">
+            <h3>Computer Science</h3>
+            <p>See my work in programming, web development, and data analytics.</p>
+        </div>
+        <div class="column" onclick="location.href='marketing.html'">
+            <h3>Marketing</h3>
+            <p>Explore my campaigns, strategies, and digital marketing experience.</p>
+        </div>
+    </section>
+
+    <!-- Projects Full Width -->
+    <section class="projects" onclick="location.href='projects.html'">
+        <h3>Projects</h3>
+        <p>A showcase of my most impactful Computer Science and Marketing projects.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="home-contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
+        <p>GitHub: <a href="#">github.com/yourusername</a></p>
+    </section>
 </div>
 
+<!-- Footer -->
 <footer>
     <p>© 2025 Your Name</p>
 </footer>
