@@ -1,148 +1,22 @@
-/* Compact title and intro */
-.project-intro.fullscreen {
-  min-height: auto; /* Remove forced height */
-  padding: 40px 30px 20px 30px;
-  text-align: center;
-  background: linear-gradient(135deg, #fcefee 0%, #f7f0f1 95%);
-  border-radius: 16px;
-  box-shadow: inset 0 0 30px #ffe1e6;
-  margin-bottom: 50px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.project-intro.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-intro h1 {
-  font-weight: 700;
-  font-size: 2.8rem;
-  letter-spacing: 2px;
-  color: #dd2e44; /* soft red */
-  margin-bottom: 12px;
-  user-select: none;
-}
-
-.project-intro p {
-  font-size: 1.15rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #5a5a5a;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-/* Project sections - flowing and layered */
-.project-section {
-  margin-bottom: 60px;
-  padding: 40px 30px;
-  border-radius: 16px;
-  background: #fff5f7;
-  box-shadow:
-    0 10px 25px rgba(255, 94, 122, 0.15),
-    inset 0 0 12px rgba(255, 190, 205, 0.3);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  display: flex;
-  gap: 36px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.project-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-section:nth-child(odd) {
-  background: linear-gradient(120deg, #ffd6dc, #ffeaf0);
-}
-
-.project-section:nth-child(even) {
-  background: linear-gradient(120deg, #fff0f3, #ffdce2);
-}
-
-.project-section h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #d72f48;
-  margin-bottom: 16px;
-  flex-basis: 100%;
-  letter-spacing: 1.2px;
-}
-
-.project-section p {
-  flex: 1 1 400px;
-  font-size: 1.1rem;
-  line-height: 1.55;
-  color: #555;
-  user-select: text;
-}
-
-.project-section ul {
-  flex: 1 1 350px;
-  list-style: disc inside;
-  margin-top: 12px;
-  color: #d3374e;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.project-section ul li {
-  margin-bottom: 8px;
-}
-
-/* Media area with soft shadow and rounded corners */
-.project-media {
-  flex: 1 1 350px;
-  max-width: 350px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(255, 80, 100, 0.18);
-  transition: transform 0.3s ease;
-}
-
-.project-media img {
-  width: 100%;
-  display: block;
-  border-radius: 20px;
-  object-fit: cover;
-}
-
-.project-media:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-  box-shadow: 0 18px 48px rgba(255, 70, 90, 0.26);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .project-section {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .project-media, .project-section p, .project-section ul {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-}
-
-/* Animated subtle text highlight */
-@keyframes subtleGlow {
-  0%, 100% {
-    color: #d72f48;
-    text-shadow: 0 0 5px #f16476;
-  }
-  50% {
-    color: #ff748f;
-    text-shadow: 0 0 12px #ff889f;
-  }
-}
-
-.project-section h2 {
-  animation: subtleGlow 4s ease-in-out infinite;
-}
+<section class="project-section" id="project-ai-water">
+  <div class="project-header">
+    <h2>Automated Water Flow Control System</h2>
+    <p class="tagline">US Patent #12017844B2</p>
+  </div>
+  <div class="project-body">
+    <div class="project-text">
+      <p>
+        Patented IoT-based water management system built in C++, Arduino, 
+        and Python. Real-time flow optimization for 1,500+ people.
+      </p>
+      <ul>
+        <li>Monitors & optimizes water distribution</li>
+        <li>Mobile app interface (Blynk)</li>
+        <li>Cloud analytics dashboard</li>
+      </ul>
+    </div>
+    <div class="project-media">
+      <img src="images/water-system.jpg" alt="Water Flow Control System">
+    </div>
+  </div>
+</section>
