@@ -1,61 +1,367 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Your Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your Portfolio - Dynamic Single Page</title>
+<style>
+  /* Root colors */
+  :root {
+    --bg-black: #120000;
+    --dark-red: #8b0000;
+    --dark-red-light: #b22929;
+    --text-light: #f5e7e7;
+    --text-muted: #aa7a7a;
+    --overlay-bg: rgba(139, 0, 0, 0.75);
+  }
+  /* Reset & base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    scroll-behavior: smooth;
+    background: var(--bg-black);
+    color: var(--text-light);
+  }
+  /* Scroll snap container */
+  main {
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Fixed top nav */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(139, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    z-index: 100;
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--text-light);
+    margin: 0 24px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1.1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  nav a:hover,
+  nav a.active {
+    color: var(--dark-red-light);
+    border-bottom-color: var(--dark-red-light);
+  }
+  /* Headings */
+  h1, h2, h3 {
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dark-red-light);
+    margin-bottom: 16px;
+  }
+  /* Welcome Section */
+  #welcome {
+    background: linear-gradient(135deg, #330000 0%, #8b0000 100%);
+    text-align: center;
+  }
+  #welcome h1 {
+    font-size: 4rem;
+    color: #fff0f0;
+  }
+  #welcome p {
+    margin-top: 12px;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    max-width: 700px;
+  }
+  /* CS & Marketing side-by-side */
+  #skills {
+    display: flex;
+    gap: 4vw;
+    max-width: 1100px;
+    width: 100%;
+    justify-content: center;
+  }
+  .card {
+    flex: 1 1 45%;
+    background: #240101;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 0 20px #8b0000aa;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px #b22929ee;
+  }
+  .card h2 {
+    margin-bottom: 16px;
+    color: var(--dark-red-light);
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  /* Learn More overlay */
+  .card .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--overlay-bg);
+    color: white;
+    font-weight: 700;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 1.3rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .card:hover .overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Projects Section */
+  #projects {
+    background: #3c0a0a;
+    max-width: 1100px;
+    width: 90%;
+    border-radius: 30px;
+    padding: 30px 50px;
+    box-shadow: 0 0 40px #9c1818cc;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #projects h2 {
+    color: var(--dark-red-light);
+    margin-bottom: 24px;
+  }
+  .project-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #501010;
+  }
+  .project-slide {
+    display: none;
+    color: #f9f1f1;
+    padding: 20px 30px;
+    box-sizing: border-box;
+  }
+  .project-slide.active {
+    display: block;
+  }
+  .project-slide h3 {
+    margin-bottom: 12px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--dark-red-light);
+  }
+  .project-slide p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .carousel-controls {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .carousel-controls button {
+    background: var(--dark-red-light);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    padding: 10px 18px;
+    margin: 0 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .carousel-controls button:hover {
+    background: var(--dark-red);
+  }
+  /* Contact Section */
+  #contact {
+    text-align: center;
+    max-width: 700px;
+  }
+  #contact h2 {
+    margin-bottom: 24px;
+    color: var(--dark-red-light);
+  }
+  #contact a {
+    color: var(--dark-red-light);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  #contact a:hover {
+    text-decoration: underline;
+  }
+  /* Footer */
+  footer {
+    background: var(--dark-red);
+    text-align: center;
+    padding: 16px 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+  }
+  /* Responsive */
+  @media (max-width: 900px) {
+    #skills {
+      flex-direction: column;
+    }
+    .card {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    main {
+      height: auto;
+      overflow-y: visible;
+    }
+  }
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-    <a href="#welcome">Home</a>
-    <a href="#cs-marketing">Computer Science & Marketing</a>
-    <a href="computer-science-projects.html">CS Projects</a>
-    <a href="marketing-projects.html">Marketing Projects</a>
-    <a href="#contact">Contact</a>
+<nav>
+  <a href="#welcome" class="nav-link active">Home</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#projects" class="nav-link">Projects</a>
+  <a href="#contact" class="nav-link">Contact</a>
 </nav>
 
-<section class="section welcome" id="welcome">
+<main>
+
+  <section id="welcome" class="visible">
     <h1>Your Name</h1>
-    <p class="subtitle">Blending Computer Science & Marketing</p>
-</section>
+    <p>Blending Computer Science & Marketing with creativity and data.</p>
+  </section>
 
-<!-- Combined CS / Marketing Block -->
-<section class="section cs-marketing" id="cs-marketing">
-    <div class="block cs-block" onclick="location.href='computer-science.html'">
-        <h2>Computer Science</h2>
-        <p>Programming, algorithms, web dev, data science.</p>
-        <div class="overlay">Learn More</div>
+  <section id="skills">
+    <div class="card" onclick="location.href='computer-science.html'" tabindex="0" role="button" aria-label="Learn more about Computer Science">
+      <h2>Computer Science</h2>
+      <p>Programming, algorithms, web development, and data science.</p>
+      <div class="overlay">Learn More</div>
     </div>
-    <div class="block marketing-block" onclick="location.href='marketing.html'">
-        <h2>Marketing</h2>
-        <p>Digital campaigns, strategy, analytics.</p>
-        <div class="overlay">Learn More</div>
+    <div class="card" onclick="location.href='marketing.html'" tabindex="0" role="button" aria-label="Learn more about Marketing">
+      <h2>Marketing</h2>
+      <p>Digital campaigns, strategy, branding, and analytics.</p>
+      <div class="overlay">Learn More</div>
     </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section class="section contact" id="contact">
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-carousel" aria-live="polite" aria-label="Project Carousel">
+      <div class="project-slide active" role="group" aria-roledescription="slide" aria-label="Project 1">
+        <h3>AI Chatbot Development</h3>
+        <p>Developed an AI chatbot using Python and TensorFlow, deployed for enhanced customer support automation.</p>
+      </div>
+      <div class="project-slide" role="group" aria-roledescription="slide" aria-label="Project 2">
+        <h3>Social Media Growth Campaign</h3>
+        <p>Led a campaign resulting in 40% increase in engagement across multiple social media platforms.</p>
+      </div>
+      <div class="project-slide" role="group" aria-roledescription="slide" aria-label="Project 3">
+        <h3>Data Visualization Platform</h3>
+        <p>Built an interactive dashboard for real-time analytics using React and D3.js.</p>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button id="prevBtn" aria-label="Previous Project">&#10094;</button>
+      <button id="nextBtn" aria-label="Next Project">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
     <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
     <p>GitHub: <a href="#">github.com/yourusername</a></p>
-</section>
+  </section>
+
+</main>
 
 <footer>
-    &copy; 2025 Your Name
+  &copy; 2025 Your Name
 </footer>
 
-<!-- Smooth scroll -->
 <script>
-document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+  // Animate section fade in when scrolled into view
+  const sections = document.querySelectorAll('section');
+  const options = {
+    threshold: 0.3
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if(activeLink) activeLink.classList.add('active');
+      }
     });
-});
+  }, options);
+  sections.forEach(section => observer.observe(section));
+
+  // Project carousel functionality
+  const slides = document.querySelectorAll('.project-slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
 </script>
+
 </body>
 </html>
