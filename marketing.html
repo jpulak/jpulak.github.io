@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Marketing - Your Name</title>
+<title>Marketing - Jana Pulak</title>
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,36 +12,33 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html">Computer Science</a>
   <a href="marketing.html" class="active">Marketing</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="index.html#contact">Contact</a>
 </nav>
 
 <main class="section">
 
-  <!-- Dynamic Intro -->
-  <section id="mkt-intro" class="project-intro fullscreen" style="min-height:auto; cursor:default;">
+  <section id="mkt-intro" class="project-intro fullscreen" style="min-height:auto;">
     <h1 id="intro-title">Marketing Projects</h1>
-    <p id="intro-desc">Here you can explore my creative campaigns, social strategies, and data-driven marketing projects that have made measurable impact for brands.</p>
+    <p id="intro-desc">Driving engagement and brand growth through data-backed creative campaigns.</p>
   </section>
 
-  <!-- Projects List -->
   <section id="mkt-details" class="project-list">
-    <article id="project-social-growth" class="section" style="background:white;">
-      <h3>Social Media Engagement Campaign</h3>
-      <p>Led a content strategy and paid promotion push that increased social engagement by over 40%. The campaign incorporated video storytelling, targeted ads, and optimized posting schedules using analytics insights.</p>
-      <p><a href="#" target="_blank">View Campaign Case Study</a></p>
+    <article id="project-urec-campaign" class="section" style="background:white;">
+      <h3>UT Dallas UREC Digital Campaign</h3>
+      <p>Created event and social media content in Adobe Suite, increasing UREC’s engagement by 150% with strategic media planning and execution.</p>
     </article>
 
-    <article id="project-email-automation" class="section" style="background:white;">
-      <h3>Email Automation Strategy</h3>
-      <p>Implemented segmented email flows with tailored content for different audience groups, boosting open rates by 35% and conversions by 18%. Fully integrated with CRM tools for lead tracking.</p>
-      <p><a href="#" target="_blank">View Campaign Analytics</a></p>
+    <article id="project-msa-brand" class="section" style="background:white;">
+      <h3>Muslim Student Association Brand Revamp</h3>
+      <p>Directed PR committee, overhauled digital branding, maintained site/newsletter, and produced analytics-driven campaigns for campus events.</p>
+    </article>
+
+    <article id="project-ikormi-promo" class="section" style="background:white;">
+      <h3>iKormi Nonprofit Awareness Program</h3>
+      <p>Produced and distributed media materials highlighting clean water initiatives, impacting fundraising and expanding donor network globally.</p>
     </article>
   </section>
 
 </main>
-
-<footer>© 2025 Your Name</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,17 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hash) {
     const target = document.getElementById(hash);
     if (target) {
-      const tTitle = target.querySelector('h3').textContent;
-      const tDesc = target.querySelector('p').textContent;
-      document.getElementById('intro-title').textContent = tTitle;
-      document.getElementById('intro-desc').textContent = tDesc;
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
+      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
+      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
+      setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 300);
     }
   }
 });
 </script>
 
+<footer>© 2025 Jana Pulak</footer>
 </body>
 </html>
