@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jana Pulak - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Navigation -->
 <nav id="navbar">
   <a href="#about" class="nav-link active">About</a>
   <a href="#computer-science" class="nav-link">Computer Science</a>
@@ -22,37 +21,37 @@
   <!-- About Section -->
   <section id="about" class="section fullscreen visible">
     <h1>About Me</h1>
-    <p>Creative professional blending technology and marketing for impactful storytelling and results.</p>
+    <p>Hi, I’m Jana Pulak — a Computer Science student at the University of Texas at Dallas, Collegium V Honors member, and holder of US Patent #12017844B2. I combine software engineering expertise with strategic marketing experience to create impactful, innovative solutions that make a difference.</p>
     <ul>
-      <li>Expertise in Computer Science and Marketing</li>
-      <li>Data-driven yet human-centered approach</li>
-      <li>Crafting innovative digital solutions and campaigns</li>
+      <li>B.S. in Computer Science, Certificate in Cybersecurity</li>
+      <li>Full-stack, IoT, and embedded systems developer</li>
+      <li>Experienced in social media marketing & content creation</li>
     </ul>
   </section>
 
   <!-- Computer Science Section -->
-  <section id="computer-science" class="section fullscreen dynamic-section" tabindex="0" role="link" aria-label="Learn more about Computer Science">
+  <section id="computer-science" class="section fullscreen dynamic-section" tabindex="0">
     <div class="content">
       <h2>Computer Science</h2>
-      <p>Building robust software with clean code, smart algorithms, and fluid user experiences.</p>
+      <p>Expert in programming, software design, IoT, and data-driven applications, with projects ranging from patented embedded systems to full-stack web applications.</p>
       <ul>
-        <li>Languages: Python, JavaScript, C++</li>
-        <li>Frameworks: React, Django, Node.js</li>
-        <li>AI, Data Analysis, Automation</li>
+        <li>Languages: C, C++, Python, Java, JavaScript, HTML, CSS, PHP, SQL</li>
+        <li>Frameworks: React.js, Node.js, Flask, Bootstrap, WordPress</li>
+        <li>Specialties: Full Stack Dev, Embedded Systems, IoT, Cybersecurity</li>
       </ul>
     </div>
     <div class="hover-overlay">Learn More</div>
   </section>
 
   <!-- Marketing Section -->
-  <section id="marketing" class="section fullscreen dynamic-section" tabindex="0" role="link" aria-label="Learn more about Marketing">
+  <section id="marketing" class="section fullscreen dynamic-section" tabindex="0">
     <div class="content">
       <h2>Marketing</h2>
-      <p>Data-driven brand storytelling that converts and inspires.</p>
+      <p>Skilled in digital strategy, content creation, and brand growth — producing measurable engagement gains for organizations and brands.</p>
       <ul>
-        <li>Social Media &amp; Content Strategy</li>
-        <li>Email Campaign Automation &amp; Analytics</li>
-        <li>Certifications: Google Analytics &amp; HubSpot</li>
+        <li>Adobe Creative Suite: Lightroom, Illustrator, Premiere Pro, Photoshop</li>
+        <li>Social Media Campaigns & Analytics</li>
+        <li>Public Relations, Event Marketing, Brand Management</li>
       </ul>
     </div>
     <div class="hover-overlay">Learn More</div>
@@ -60,69 +59,57 @@
 
   <!-- Projects Section -->
   <section id="projects" class="section projects-section">
-
     <!-- CS Projects -->
     <div class="projects-half cs-projects">
       <h2>Computer Science Projects</h2>
-      <div class="carousel cs-carousel" aria-live="polite" aria-atomic="true">
-
-        <div class="project-slide active" onclick="location.href='computer-science.html#project-ai-chatbot'">
-          <h3>AI Chatbot Development</h3>
-          <p>NLP assistant automating customer support.</p>
+      <div class="carousel cs-carousel">
+        <div class="project-slide active" onclick="location.href='computer-science.html#project-ai-water'">
+          <h3>Automated Water Flow Control System</h3>
+          <p>Patented IoT water management system serving 1,500+ people.</p>
         </div>
-
-        <div class="project-slide" onclick="location.href='computer-science.html#project-data-visualization'">
-          <h3>Data Visualization Platform</h3>
-          <p>Interactive dashboards built with React/D3.</p>
+        <div class="project-slide" onclick="location.href='computer-science.html#project-ikormi-platform'">
+          <h3>iKormi Digital Management Platform</h3>
+          <p>Community impact and donor management software.</p>
         </div>
-
       </div>
       <div class="carousel-controls cs-controls">
-        <button class="prev-btn" aria-label="Previous project">&#x276E;</button>
-        <button class="next-btn" aria-label="Next project">&#x276F;</button>
+        <button class="prev-btn">&#x276E;</button>
+        <button class="next-btn">&#x276F;</button>
       </div>
     </div>
 
     <!-- Marketing Projects -->
     <div class="projects-half marketing-projects">
       <h2>Marketing Projects</h2>
-      <div class="carousel marketing-carousel" aria-live="polite" aria-atomic="true">
-
-        <div class="project-slide active" onclick="location.href='marketing.html#project-social-growth'">
-          <h3>Social Media Engagement Campaign</h3>
-          <img src="images/social-campaign.jpg" alt="Social Campaign Image" onerror="this.style.display='none'">
-          <p>Boosted organic engagement by 40% with creative messaging.</p>
+      <div class="carousel marketing-carousel">
+        <div class="project-slide active" onclick="location.href='marketing.html#project-urec-campaign'">
+          <h3>UT Dallas UREC Digital Campaign</h3>
+          <p>150% engagement increase through strategic content.</p>
         </div>
-
-        <div class="project-slide" onclick="location.href='marketing.html#project-email-automation'">
-          <h3>Email Automation Strategy</h3>
-          <img src="images/email-campaign.jpg" alt="Email Campaign Image" onerror="this.style.display='none'">
-          <p>Optimized conversions with segmented, automated flows.</p>
+        <div class="project-slide" onclick="location.href='marketing.html#project-msa-brand'">
+          <h3>UTD MSA Brand Revamp</h3>
+          <p>Oversaw all PR & digital growth for student org events.</p>
         </div>
-
       </div>
       <div class="carousel-controls marketing-controls">
-        <button class="prev-btn" aria-label="Previous project">&#x276E;</button>
-        <button class="next-btn" aria-label="Next project">&#x276F;</button>
+        <button class="prev-btn">&#x276E;</button>
+        <button class="next-btn">&#x276F;</button>
       </div>
     </div>
-
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="section contact-section">
     <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
-    <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+    <p>Email: <a href="mailto:jpulak@gmail.com">jpulak@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/jana-pulak">linkedin.com/in/jana-pulak</a></p>
+    <p>GitHub: <a href="https://github.com/jpulak">github.com/jpulak</a></p>
+    <p>Patent: <a href="https://patents.google.com/patent/US12017844B2">US12017844B2</a></p>
   </section>
 
 </main>
 
-<footer>
-  &copy; 2025 Your Name
-</footer>
-
+<footer>© 2025 Jana Pulak</footer>
 <script src="script.js"></script>
 </body>
 </html>
