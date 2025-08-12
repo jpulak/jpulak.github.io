@@ -97,3 +97,21 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCarousel(".marketing-carousel", ".marketing-controls");
 
 });
+
+document.addEventListener('scroll', () => {
+  document.querySelectorAll('.project-section').forEach(section => {
+    const header = section.querySelector('.project-header');
+    const rect = section.getBoundingClientRect();
+    const fadePoint = window.innerHeight * 0.5;
+    
+    if (rect.top < fadePoint && rect.bottom > 0) {
+      const progress = Math.min(1, Math.max(0, (fadePoint - rect.top) / fadePoint));
+      header.style.opacity = 1 - progress; // fades out
+      header.style.transform = `translateY(${progress * -30}px)`; // moves upward
+    } else {
+      header.style.opacity = 1;
+      header.style.transform = 'translateY(0)';
+    }
+  });
+});
+
