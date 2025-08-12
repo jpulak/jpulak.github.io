@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Science - Your Name</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -11,24 +12,30 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html" class="active">Computer Science</a>
   <a href="marketing.html">Marketing</a>
-  <a href="projects.html">Projects</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#contact">Contact</a>
 </nav>
 
 <main class="section">
 
-  <section id="cs-intro" class="project-intro">
+  <!-- Dynamic Intro -->
+  <section id="cs-intro" class="project-intro fullscreen" style="min-height:auto; cursor:default;">
     <h1 id="intro-title">Computer Science Projects</h1>
-    <p id="intro-desc">My full tech portfolio, skills, and detailed project breakdowns.</p>
+    <p id="intro-desc">Explore my technical projects, from AI chatbots to data visualization platforms, showcasing my skills in programming, algorithms, and modern frameworks.</p>
   </section>
 
+  <!-- Projects List -->
   <section id="cs-details" class="project-list">
-    <article id="project-ai-chatbot">
+    <article id="project-ai-chatbot" class="section" style="background:white;">
       <h3>AI Chatbot Development</h3>
-      <p>Deep dive into building NLP assistants with Python + TensorFlow.</p>
+      <p>Developed an intelligent chatbot using Python and TensorFlow's NLP capabilities. It can understand queries, provide automated responses, and integrate into business customer support workflows — improving support efficiency by 60%.</p>
+      <p><a href="#" target="_blank">View Project</a></p>
     </article>
-    <article id="project-data-dashboards">
-      <h3>Data Visualization Dashboards</h3>
-      <p>Real-time data handled in React/D3 to support live analytics.</p>
+
+    <article id="project-data-visualization" class="section" style="background:white;">
+      <h3>Data Visualization Platform</h3>
+      <p>Built an interactive dashboard using React and D3.js that provides real-time visualization for live datasets. Features multiple graph types, filters, and responsive design for various screen sizes.</p>
+      <p><a href="#" target="_blank">View Live Demo</a></p>
     </article>
   </section>
 
@@ -37,14 +44,20 @@
 <footer>© 2025 Your Name</footer>
 
 <script>
+// Runs after page loads
 document.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash.substring(1);
-  if(hash){
+  const hash = window.location.hash.substring(1); // remove '#'
+  if (hash) {
     const target = document.getElementById(hash);
-    if(target){
-      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
-      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
-      target.scrollIntoView({behavior:'smooth'});
+    if (target) {
+      // Set intro title and description from this project
+      const tTitle = target.querySelector('h3').textContent;
+      const tDesc = target.querySelector('p').textContent;
+      document.getElementById('intro-title').textContent = tTitle;
+      document.getElementById('intro-desc').textContent = tDesc;
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
     }
   }
 });
