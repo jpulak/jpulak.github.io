@@ -1,101 +1,93 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("#navbar a");
   const sections = document.querySelectorAll("main section");
 
-  // Intersection Observer to fade sections in when scrolled
+  // Intersection observer for section fade-in
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+    entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
           entry.target.classList.add("visible");
         }
       });
     },
     { threshold: 0.25 }
   );
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach(section => observer.observe(section));
 
-  // Highlight nav link based on scroll position
+  // Highlight active nav on scroll
   window.addEventListener("scroll", () => {
-    let currentId = "";
-    sections.forEach((section) => {
-      const top = section.offsetTop - 100;
-      if (window.pageYOffset >= top) {
-        currentId = section.id;
+    let currentSection = null;
+    sections.forEach(section => {
+      if(window.pageYOffset >= (section.offsetTop - 100)){
+        currentSection = section.id;
       }
     });
-    navLinks.forEach((link) => {
+    navLinks.forEach(link => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + currentId) {
+      if(link.getAttribute("href") === "#" + currentSection){
         link.classList.add("active");
       }
     });
   });
 
-  // Smooth scrolling for nav links
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
+  // Smooth scrolling nav links
+  navLinks.forEach(link => {
+    link.addEventListener("click", e => {
       e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+      const targetId = link.getAttribute("href").substring(1);
+      const targetEl = document.getElementById(targetId);
+      if(targetEl){
+        targetEl.scrollIntoView({behavior: "smooth"});
       }
     });
   });
 
-  // Add click handlers for fullscreen dynamic sections (CS, Marketing)
-  document.querySelectorAll(".dynamic-section").forEach((section) => {
-    // Allow Enter key to activate link
-    section.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
+  // Clickable fullscreen sections with Learn More overlay (CS & Marketing)
+  document.querySelectorAll(".dynamic-section").forEach(section => {
+    section.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){
         e.preventDefault();
         section.click();
       }
     });
-
     section.addEventListener("click", () => {
-      // Determine section id for redirection
-      const id = section.id;
-      window.location.href = id + ".html";
+      const targetPage = section.id + ".html";
+      window.location.href = targetPage;
     });
   });
 
-  // Carousel Logic
-  function setupCarousel(carouselClass, controlClass) {
-    const carousel = document.querySelector(carouselClass);
-    if (!carousel) return;
-
+  // Carousel Functionality
+  function setupCarousel(carouselSelector, controlsSelector) {
+    const carousel = document.querySelector(carouselSelector);
+    if(!carousel) return;
+    
     const slides = carousel.querySelectorAll(".project-slide");
-    const controls = document.querySelector(controlClass);
-    if (!slides.length || !controls) return;
+    const controls = document.querySelector(controlsSelector);
+    if(!controls || slides.length === 0) return;
 
     let currentIndex = 0;
-
     const prevBtn = controls.querySelector(".prev-btn");
     const nextBtn = controls.querySelector(".next-btn");
 
-    function showSlide(index) {
-      slides.forEach((slide, i) =>
-        slide.classList.toggle("active", i === index)
-      );
+    function showSlide(index){
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
     }
-
     prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      currentIndex = (currentIndex -1 + slides.length) % slides.length;
       showSlide(currentIndex);
     });
     nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % slides.length;
+      currentIndex = (currentIndex +1) % slides.length;
       showSlide(currentIndex);
     });
 
-    // Enable keyboard navigation of slides
-    carousel.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        prevBtn.click();
-      } else if (e.key === "ArrowRight") {
-        nextBtn.click();
-      }
+    // Keyboard navigation support
+    carousel.addEventListener("keydown", e => {
+      if(e.key === "ArrowLeft") prevBtn.click();
+      else if(e.key === "ArrowRight") nextBtn.click();
     });
 
     showSlide(currentIndex);
@@ -103,4 +95,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setupCarousel(".cs-carousel", ".cs-controls");
   setupCarousel(".marketing-carousel", ".marketing-controls");
+
 });
