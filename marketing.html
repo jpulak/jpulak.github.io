@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marketing - Jana Pulak</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
+<style>
+.project-section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+  border-radius: 14px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.08);
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.project-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.project-section:nth-child(even) {
+  background-color: var(--accent-pink-lite);
+}
+.project-section:nth-child(odd) {
+  background-color: white;
+}
+.project-section h2 {
+  font-size: 2rem;
+  color: var(--primary-teal);
+  margin-bottom: 12px;
+}
+.project-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.project-section ul {
+  margin-top: 14px;
+  padding-left: 20px;
+}
+.project-section li {
+  margin-bottom: 8px;
+}
+</style>
 </head>
 <body>
 
@@ -12,48 +51,71 @@
   <a href="index.html">Home</a>
   <a href="computer-science.html">Computer Science</a>
   <a href="marketing.html" class="active">Marketing</a>
+  <a href="index.html#projects">Projects</a>
 </nav>
 
-<main class="section">
+<main>
 
-  <section id="mkt-intro" class="project-intro fullscreen" style="min-height:auto;">
-    <h1 id="intro-title">Marketing Projects</h1>
-    <p id="intro-desc">Driving engagement and brand growth through data-backed creative campaigns.</p>
-  </section>
+<section class="section fullscreen" style="cursor:default;">
+  <h1>Marketing Portfolio</h1>
+  <p>Creative campaigns and digital strategies that amplified engagement, expanded outreach, and strengthened brand presence.</p>
+</section>
 
-  <section id="mkt-details" class="project-list">
-    <article id="project-urec-campaign" class="section" style="background:white;">
-      <h3>UT Dallas UREC Digital Campaign</h3>
-      <p>Created event and social media content in Adobe Suite, increasing UREC’s engagement by 150% with strategic media planning and execution.</p>
-    </article>
+<!-- Projects -->
+<div id="project-urec-campaign" class="project-section">
+  <h2>UT Dallas UREC Digital Campaign</h2>
+  <p>Designed and edited high–quality digital content for UTD’s University Recreation Center using Adobe Creative Suite tools. Produced media for events and initiatives that boosted social engagement by 150% through coordinated social media strategy and audience–targeted storytelling.</p>
+  <ul>
+    <li>Managed cross–platform content rollout.</li>
+    <li>Photography and videography for event promotions.</li>
+    <li>Data–driven analysis to optimize marketing approach.</li>
+  </ul>
+</div>
 
-    <article id="project-msa-brand" class="section" style="background:white;">
-      <h3>Muslim Student Association Brand Revamp</h3>
-      <p>Directed PR committee, overhauled digital branding, maintained site/newsletter, and produced analytics-driven campaigns for campus events.</p>
-    </article>
+<div id="project-msa-brand" class="project-section">
+  <h2>Muslim Student Association Brand Revamp</h2>
+  <p>Overhauled MSA’s brand presence with consistent, visually engaging campaigns, refreshed web and newsletter design, and cohesive event promotions coordinated with the PR committee.</p>
+  <ul>
+    <li>Directed content creation team of photographers, videographers, and designers.</li>
+    <li>Implemented analytics tracking and performance reporting.</li>
+    <li>Strengthened event participation through targeted messaging.</li>
+  </ul>
+</div>
 
-    <article id="project-ikormi-promo" class="section" style="background:white;">
-      <h3>iKormi Nonprofit Awareness Program</h3>
-      <p>Produced and distributed media materials highlighting clean water initiatives, impacting fundraising and expanding donor network globally.</p>
-    </article>
-  </section>
+<div id="project-ikormi-promo" class="project-section">
+  <h2>iKormi Nonprofit Awareness Program</h2>
+  <p>Planned and executed visual media campaigns to raise awareness for humanitarian clean water projects, leveraging emotional storytelling and high–impact visuals.</p>
+  <ul>
+    <li>Amplified fundraising efforts, contributing to project sustainability.</li>
+    <li>Expanded international donor base through targeted online reach.</li>
+  </ul>
+</div>
 
 </main>
 
+<footer>© 2025 Jana Pulak</footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.project-section');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, {threshold: 0.2});
+  sections.forEach(s => obs.observe(s));
+
   const hash = window.location.hash.substring(1);
   if (hash) {
     const target = document.getElementById(hash);
     if (target) {
-      document.getElementById('intro-title').textContent = target.querySelector('h3').textContent;
-      document.getElementById('intro-desc').textContent = target.querySelector('p').textContent;
-      setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 300);
+      setTimeout(() => {
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }, 400);
     }
   }
 });
 </script>
 
-<footer>© 2025 Jana Pulak</footer>
 </body>
 </html>
