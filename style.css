@@ -120,3 +120,59 @@ footer {
     .navbar { flex-wrap: wrap; gap: 17px; padding: 15px 0; }
     .project-list { flex-direction: column; }
 }
+/* Combined CS and Marketing container */
+.cs-marketing {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.block {
+    position: relative;
+    flex: 1 1 380px;
+    background: var(--card-bg);
+    color: var(--text-main);
+    padding: 40px 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 30px #3c0a0acc;
+    cursor: pointer;
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+.block:hover {
+    transform: translateY(-6px);
+}
+
+/* Overlay for "Learn More" */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--red-accent);
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 1.1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.block:hover .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Responsive - stack on smaller screens */
+@media (max-width: 720px) {
+    .cs-marketing {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
